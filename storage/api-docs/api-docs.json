@@ -1,0 +1,19 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "userauth",
+        "version": "0.1"
+    },
+    "paths": {
+        "/manager/user/checkemail": {
+            "post": {
+                "operationId": "App\\Http\\Controllers\\V1\\UserInfoController::CheckEmail",
+                "responses": {
+                    "200": {
+                        "description": "A list with products"
+                    }
+                }
+            }
+        }
+    }
+}
