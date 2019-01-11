@@ -34,13 +34,11 @@ class UserAuthMiddleware
             throw new UnauthorizedHttpException('no auth');
         }
 
-        if($user->isfreeze == 0){
+        $id = $user->id;
+        $userinfo = UserInfo::where('userid', $id)->first();
+        if($userinfo && $userinfo->isfreeze == 0){
             throw new UnauthorizedHttpException('no auth');
         }
-
-        $id = $user->id;
-
-        $userinfo = UserInfo::where('userid', $id)->first();
 
         if(!$userinfo){
             throw new UnauthorizedHttpException('no auth');

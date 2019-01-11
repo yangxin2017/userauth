@@ -16,7 +16,7 @@ class AuthMenuController extends BaseController{
 
     /**
      * @OA\Post(
-     *  path="/api/manager/menu/add/",
+     *  path="/userauth/manager/menu/add/",
      *  summary="添加菜单",
      *  tags={"菜单管理"},
      *  @OA\Response(
@@ -134,7 +134,7 @@ class AuthMenuController extends BaseController{
 
     /**
      * @OA\Put(
-     *  path="/api/manager/menu/update/{id}",
+     *  path="/userauth/manager/menu/update/{id}",
      *  summary="更新菜单",
      *  tags={"菜单管理"},
      *  @OA\Response(
@@ -276,7 +276,7 @@ class AuthMenuController extends BaseController{
 
     /**
      * @OA\Get(
-     *  path="/api/manager/menu/getlist",
+     *  path="/userauth/manager/menu/getlist",
      *  summary="获取菜单列表",
      *  tags={"菜单管理"},
      *  @OA\Response(
@@ -303,7 +303,7 @@ class AuthMenuController extends BaseController{
 
     /**
      * @OA\Delete(
-     *  path="/api/manager/menu/delete/{id}",
+     *  path="/userauth/manager/menu/delete/{id}",
      *  summary="删除菜单",
      *  tags={"菜单管理"},
      *  @OA\Response(

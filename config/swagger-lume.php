@@ -1,4 +1,5 @@
 <?php
+
 return [
     'api' => [
         /*
@@ -57,14 +58,14 @@ return [
         | Absolute path to location where parsed swagger annotations will be stored
         |--------------------------------------------------------------------------
          */
-        'docs' => 'public/docs',//storage_path('api-docs'),
+        'docs' => storage_path('api-docs'),
 
         /*
         |--------------------------------------------------------------------------
         | File name of the generated json documentation file
         |--------------------------------------------------------------------------
         */
-        'docs_json' => 'index.html',//'api-docs.json',
+        'docs_json' => 'api-docs.json',
 
         /*
         |--------------------------------------------------------------------------

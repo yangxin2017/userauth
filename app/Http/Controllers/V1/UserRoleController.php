@@ -17,7 +17,7 @@ class UserRoleController extends BaseController{
 
     /**
      * @OA\Get(
-     *  path="/api/manager/role/checkname/",
+     *  path="/userauth/manager/role/checkname/",
      *  summary="检查角色名称是否存在",
      *  tags={"角色管理"},
      *  @OA\Response(
@@ -62,7 +62,7 @@ class UserRoleController extends BaseController{
 
     /**
      * @OA\Post(
-     *  path="/api/manager/role/add/",
+     *  path="/userauth/manager/role/add/",
      *  summary="添加角色",
      *  tags={"角色管理"},
      *  @OA\Response(
@@ -130,7 +130,7 @@ class UserRoleController extends BaseController{
 
     /**
      * @OA\Put(
-     *  path="/api/manager/role/update/{id}",
+     *  path="/userauth/manager/role/update/{id}",
      *  summary="更新角色",
      *  tags={"角色管理"},
      *  @OA\Response(
@@ -210,7 +210,7 @@ class UserRoleController extends BaseController{
 
     /**
      * @OA\Get(
-     *  path="/api/manager/role/getlist",
+     *  path="/userauth/manager/role/getlist",
      *  summary="获取角色列表",
      *  tags={"角色管理"},
      *  @OA\Response(
@@ -236,7 +236,7 @@ class UserRoleController extends BaseController{
 
     /**
      * @OA\Delete(
-     *  path="/api/manager/role/delete/{id}",
+     *  path="/userauth/manager/role/delete/{id}",
      *  summary="删除角色",
      *  tags={"角色管理"},
      *  @OA\Response(

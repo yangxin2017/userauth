@@ -27,7 +27,7 @@ class UserInfoController extends BaseController{
 
     /**
      * @OA\Get(
-     *  path="/api/manager/user/checkemail",
+     *  path="/userauth/manager/user/checkemail",
      *  summary="检查邮件是否已被注册",
      *  tags={"用户管理"},
      *  @OA\Response(
@@ -71,7 +71,7 @@ class UserInfoController extends BaseController{
 
     /**
      * @OA\Post(
-     *  path="/api/manager/user/add/",
+     *  path="/userauth/manager/user/add/",
      *  summary="添加用户",
      *  tags={"用户管理"},
      *  @OA\Response(
@@ -206,7 +206,7 @@ class UserInfoController extends BaseController{
 
     /**
      * @OA\Put(
-     *  path="/api/manager/user/update/{id}",
+     *  path="/userauth/manager/user/update/{id}",
      *  summary="更新用户",
      *  tags={"用户管理"},
      *  @OA\Response(
@@ -318,7 +318,7 @@ class UserInfoController extends BaseController{
 
     /**
      * @OA\Get(
-     *  path="/api/manager/user/getlist",
+     *  path="/userauth/manager/user/getlist",
      *  summary="获取用户列表",
      *  tags={"用户管理"},
      *  @OA\Response(
@@ -347,7 +347,7 @@ class UserInfoController extends BaseController{
 
     /**
      * @OA\Delete(
-     *  path="/api/manager/user/delete/{id}",
+     *  path="/userauth/manager/user/delete/{id}",
      *  summary="删除用户",
      *  tags={"用户管理"},
      *  @OA\Response(
@@ -397,7 +397,7 @@ class UserInfoController extends BaseController{
 
     /**
      * @OA\Post(
-     *  path="/api/manager/user/freeze/{id}",
+     *  path="/userauth/manager/user/freeze/{id}",
      *  summary="冻结/解冻用户",
      *  tags={"用户管理"},
      *  @OA\Response(
@@ -455,7 +455,7 @@ class UserInfoController extends BaseController{
 
     /**
      * @OA\Post(
-     *  path="/api/auth/login",
+     *  path="/userauth/auth/login",
      *  summary="登录",
      *  tags={"用户管理"},
      *  @OA\Response(
@@ -497,7 +497,8 @@ class UserInfoController extends BaseController{
         }
         
         $user = JWTAuth::user();
-        if($user && $user->isfreeze == 0){
+        $userinfo = UserInfo::find($user->id);
+        if($userinfo && $userinfo->isfreeze == 0){
             return $this->response->error('用户已被冻结', 200);
         }
 
@@ -507,7 +508,7 @@ class UserInfoController extends BaseController{
 
     /**
      * @OA\Get(
-     *  path="/api/auth/isauth",
+     *  path="/userauth/auth/isauth",
      *  summary="检查用户是否有权限操作",
      *  tags={"用户管理"},
      *  @OA\Response(
@@ -527,7 +528,8 @@ class UserInfoController extends BaseController{
      * )
      */
     public function IsHaveAuth(Request $request){
-        return $this->response->noContent();
+        $user = JWTAuth::user();
+        return $user;
     }
 
 }

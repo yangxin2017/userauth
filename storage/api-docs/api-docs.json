@@ -1,16 +1,898 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "userauth",
+        "title": "\u7528\u6237\u6743\u9650\u7ba1\u7406",
         "version": "0.1"
     },
     "paths": {
-        "/manager/user/checkemail": {
+        "/userauth/manager/menu/add/": {
             "post": {
-                "operationId": "App\\Http\\Controllers\\V1\\UserInfoController::CheckEmail",
+                "tags": [
+                    "\u83dc\u5355\u7ba1\u7406"
+                ],
+                "summary": "\u6dfb\u52a0\u83dc\u5355",
+                "operationId": "App\\Http\\Controllers\\V1\\AuthMenuController::AddMenu",
+                "parameters": [
+                    {
+                        "parameter": "parentid",
+                        "name": "parentid",
+                        "in": "query",
+                        "description": "\u7236\u7ea7\u83dc\u5355Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "name",
+                        "name": "name",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u540d\u79f0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "desc",
+                        "name": "desc",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u63cf\u8ff0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "link",
+                        "name": "link",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u8fde\u63a5",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "icon",
+                        "name": "icon",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u56fe\u6807",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "isshow",
+                        "name": "isshow",
+                        "in": "query",
+                        "description": "\u662f\u5426\u663e\u793a\u83dc\u5355",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "auth",
+                        "name": "auth",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u6743\u9650\u5b57\u7b26\u4e32\u540d\u79f0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "authval",
+                        "name": "authval",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u6743\u9650\u5b57\u7b26\u4e32\u7684\u503c",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "A list with products"
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/menu/update/{id}": {
+            "put": {
+                "tags": [
+                    "\u83dc\u5355\u7ba1\u7406"
+                ],
+                "summary": "\u66f4\u65b0\u83dc\u5355",
+                "operationId": "App\\Http\\Controllers\\V1\\AuthMenuController::UpdateMenu",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u83dc\u5355Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "parentid",
+                        "name": "parentid",
+                        "in": "query",
+                        "description": "\u7236\u7ea7\u83dc\u5355Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "name",
+                        "name": "name",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u540d\u79f0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "desc",
+                        "name": "desc",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u63cf\u8ff0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "link",
+                        "name": "link",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u8fde\u63a5",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "icon",
+                        "name": "icon",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u56fe\u6807",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "isshow",
+                        "name": "isshow",
+                        "in": "query",
+                        "description": "\u662f\u5426\u663e\u793a\u83dc\u5355",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "auth",
+                        "name": "auth",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u6743\u9650\u5b57\u7b26\u4e32\u540d\u79f0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "authval",
+                        "name": "authval",
+                        "in": "query",
+                        "description": "\u83dc\u5355\u6743\u9650\u5b57\u7b26\u4e32\u7684\u503c",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/menu/getlist": {
+            "get": {
+                "tags": [
+                    "\u83dc\u5355\u7ba1\u7406"
+                ],
+                "summary": "\u83b7\u53d6\u83dc\u5355\u5217\u8868",
+                "operationId": "App\\Http\\Controllers\\V1\\AuthMenuController::GetMenus",
+                "parameters": [
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/menu/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "\u83dc\u5355\u7ba1\u7406"
+                ],
+                "summary": "\u5220\u9664\u83dc\u5355",
+                "operationId": "App\\Http\\Controllers\\V1\\AuthMenuController::DeleteMenu",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u83dc\u5355Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/user/checkemail": {
+            "get": {
+                "tags": [
+                    "\u7528\u6237\u7ba1\u7406"
+                ],
+                "summary": "\u68c0\u67e5\u90ae\u4ef6\u662f\u5426\u5df2\u88ab\u6ce8\u518c",
+                "operationId": "App\\Http\\Controllers\\V1\\UserInfoController::CheckEmail",
+                "parameters": [
+                    {
+                        "parameter": "email",
+                        "name": "email",
+                        "in": "query",
+                        "description": "\u90ae\u7bb1\u5730\u5740",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/user/add/": {
+            "post": {
+                "tags": [
+                    "\u7528\u6237\u7ba1\u7406"
+                ],
+                "summary": "\u6dfb\u52a0\u7528\u6237",
+                "operationId": "App\\Http\\Controllers\\V1\\UserInfoController::AddUser",
+                "parameters": [
+                    {
+                        "parameter": "email",
+                        "name": "email",
+                        "in": "query",
+                        "description": "\u90ae\u7bb1\u5730\u5740",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "roleid",
+                        "name": "roleid",
+                        "in": "query",
+                        "description": "\u89d2\u8272Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "password",
+                        "name": "password",
+                        "in": "query",
+                        "description": "\u6ce8\u518c\u5bc6\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "loginname",
+                        "name": "loginname",
+                        "in": "query",
+                        "description": "\u767b\u5f55\u540d",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "nickname",
+                        "name": "nickname",
+                        "in": "query",
+                        "description": "\u59d3\u540d",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "cellphone",
+                        "name": "cellphone",
+                        "in": "query",
+                        "description": "\u624b\u673a\u53f7\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "isfreeze",
+                        "name": "isfreeze",
+                        "in": "query",
+                        "description": "\u662f\u5426\u51bb\u7ed3\u7528\u6237",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/user/update/{id}": {
+            "put": {
+                "tags": [
+                    "\u7528\u6237\u7ba1\u7406"
+                ],
+                "summary": "\u66f4\u65b0\u7528\u6237",
+                "operationId": "App\\Http\\Controllers\\V1\\UserInfoController::UpdateUser",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u7528\u6237Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "roleid",
+                        "name": "roleid",
+                        "in": "query",
+                        "description": "\u89d2\u8272Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "loginname",
+                        "name": "loginname",
+                        "in": "query",
+                        "description": "\u767b\u5f55\u540d",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "nickname",
+                        "name": "nickname",
+                        "in": "query",
+                        "description": "\u59d3\u540d",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "cellphone",
+                        "name": "cellphone",
+                        "in": "query",
+                        "description": "\u624b\u673a\u53f7\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "isfreeze",
+                        "name": "isfreeze",
+                        "in": "query",
+                        "description": "\u662f\u5426\u51bb\u7ed3\u7528\u6237",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/user/getlist": {
+            "get": {
+                "tags": [
+                    "\u7528\u6237\u7ba1\u7406"
+                ],
+                "summary": "\u83b7\u53d6\u7528\u6237\u5217\u8868",
+                "operationId": "App\\Http\\Controllers\\V1\\UserInfoController::GetUsers",
+                "parameters": [
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/user/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "\u7528\u6237\u7ba1\u7406"
+                ],
+                "summary": "\u5220\u9664\u7528\u6237",
+                "operationId": "App\\Http\\Controllers\\V1\\UserInfoController::DeleteUser",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u7528\u6237Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/user/freeze/{id}": {
+            "post": {
+                "tags": [
+                    "\u7528\u6237\u7ba1\u7406"
+                ],
+                "summary": "\u51bb\u7ed3/\u89e3\u51bb\u7528\u6237",
+                "operationId": "App\\Http\\Controllers\\V1\\UserInfoController::FreezeUser",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u7528\u6237Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "isfreeze",
+                        "name": "isfreeze",
+                        "in": "path",
+                        "description": "\u662f\u5426\u51bb\u7ed3\u7528\u6237",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/auth/login": {
+            "post": {
+                "tags": [
+                    "\u7528\u6237\u7ba1\u7406"
+                ],
+                "summary": "\u767b\u5f55",
+                "operationId": "App\\Http\\Controllers\\V1\\UserInfoController::GetUser",
+                "parameters": [
+                    {
+                        "parameter": "email",
+                        "name": "email",
+                        "in": "query",
+                        "description": "\u90ae\u7bb1\u5730\u5740",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "password",
+                        "name": "password",
+                        "in": "query",
+                        "description": "\u6ce8\u518c\u5bc6\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/auth/isauth": {
+            "get": {
+                "tags": [
+                    "\u7528\u6237\u7ba1\u7406"
+                ],
+                "summary": "\u68c0\u67e5\u7528\u6237\u662f\u5426\u6709\u6743\u9650\u64cd\u4f5c",
+                "operationId": "App\\Http\\Controllers\\V1\\UserInfoController::IsHaveAuth",
+                "parameters": [
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/role/checkname/": {
+            "get": {
+                "tags": [
+                    "\u89d2\u8272\u7ba1\u7406"
+                ],
+                "summary": "\u68c0\u67e5\u89d2\u8272\u540d\u79f0\u662f\u5426\u5b58\u5728",
+                "operationId": "App\\Http\\Controllers\\V1\\UserRoleController::CheckLoginNameExist",
+                "parameters": [
+                    {
+                        "parameter": "name",
+                        "name": "name",
+                        "in": "query",
+                        "description": "\u89d2\u8272\u540d\u79f0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/role/add/": {
+            "post": {
+                "tags": [
+                    "\u89d2\u8272\u7ba1\u7406"
+                ],
+                "summary": "\u6dfb\u52a0\u89d2\u8272",
+                "operationId": "App\\Http\\Controllers\\V1\\UserRoleController::AddRole",
+                "parameters": [
+                    {
+                        "parameter": "name",
+                        "name": "name",
+                        "in": "query",
+                        "description": "\u89d2\u8272\u540d\u79f0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "desc",
+                        "name": "desc",
+                        "in": "query",
+                        "description": "\u89d2\u8272\u63cf\u8ff0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "authstr",
+                        "name": "authstr",
+                        "in": "query",
+                        "description": "\u89d2\u8272\u6388\u6743",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/role/update/{id}": {
+            "put": {
+                "tags": [
+                    "\u89d2\u8272\u7ba1\u7406"
+                ],
+                "summary": "\u66f4\u65b0\u89d2\u8272",
+                "operationId": "App\\Http\\Controllers\\V1\\UserRoleController::UpdateRole",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u89d2\u8272Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "name",
+                        "name": "name",
+                        "in": "query",
+                        "description": "\u89d2\u8272\u540d\u79f0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "desc",
+                        "name": "desc",
+                        "in": "query",
+                        "description": "\u89d2\u8272\u63cf\u8ff0",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "authstr",
+                        "name": "authstr",
+                        "in": "query",
+                        "description": "\u89d2\u8272\u6388\u6743",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/role/getlist": {
+            "get": {
+                "tags": [
+                    "\u89d2\u8272\u7ba1\u7406"
+                ],
+                "summary": "\u83b7\u53d6\u89d2\u8272\u5217\u8868",
+                "operationId": "App\\Http\\Controllers\\V1\\UserRoleController::GetRoles",
+                "parameters": [
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/userauth/manager/role/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "\u89d2\u8272\u7ba1\u7406"
+                ],
+                "summary": "\u5220\u9664\u89d2\u8272",
+                "operationId": "App\\Http\\Controllers\\V1\\UserRoleController::DeleteRole",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u89d2\u8272Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "parameter": "token",
+                        "name": "token",
+                        "in": "query",
+                        "description": "\u6388\u6743\u7801",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
                     }
                 }
             }
