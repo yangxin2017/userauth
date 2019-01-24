@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use App\Modal\V1\UserInfo;
 use App\User;
 use App\Modal\V1\UserRole;
+use App\Modal\V1\UserToken;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Transformers\UserInfoTransformer;
+use App\Transformers\UserTokenTransformer;
 
 class UserInfoController extends BaseController{
 
@@ -530,6 +532,64 @@ class UserInfoController extends BaseController{
     public function IsHaveAuth(Request $request){
         $user = JWTAuth::user();
         return $user;
+    }
+
+    
+    public function GetUserById(Request $request, $userid){
+        $user = User::find($userid);
+        $user->infor = UserInfo::find($user->id);
+        return $user;
+    }
+
+    public function WxRegist(Request $request){
+        $v = $this->validate($request, [
+            'openid'=>'required|string',
+            'nickname'=>'required|string',
+            'country'=>'required|string',
+            'province'=>'required|string',
+            'city'=>'required|string',
+            'sex'=>'required|string',
+            'avatar'=>'required|string',
+            'accesstoken'=>'required|string',
+            'refreshtoken'=>'required|string'
+        ]);
+
+        $uinfor = null;
+
+        DB::transaction(function() use ($v, $uinfor){
+
+            $userarr = array(
+                'email'=> 'wx',
+                'password'=> '******',
+                'salt'=> ''
+            );
+
+            $nuser = User::create($userarr);
+
+            $userinfoarr = array(
+                'userid'=>$nuser->id,
+                'roleid'=>3, //loginname,cellphone,isfreeze,
+                'loginname'=>'wx',
+                'cellphone'=>'',
+                'isfreeze'=>1,
+                'nickname'=>$v['nickname'],
+                'country'=>$v['country'],
+                'province'=>$v['province'],
+                'city'=>$v['city'],
+                'sex'=>$v['sex'],
+                'avatar'=>$v['avatar']
+            );
+            $uinfor = UserInfo::create($userinfoarr);
+
+            $tokenarr = array(
+                'userid'=>$nuser->id,
+                'accesstoken'=>$v['accesstoken'],
+                'refreshtoken'=>$v['refreshtoken']
+            );
+            UserToken::create($tokenarr);
+        });
+        
+        return $this->response->item($uinfor, new UserInfoTransformer);
     }
 
 }

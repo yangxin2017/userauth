@@ -24,6 +24,11 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers\V1'], function($api){
         'uses' => 'UserInfoController@GetUser'
     ]);
 
+    $api->post('/auth/wxauth', [
+        'as' => 'user.auth.wxauth',
+        'uses' => 'UserInfoController@WxRegist'
+    ]);
+
     $api->group(['middleware' => ['api.auth', 'useradmin']], function($api){
 
         $api->get('/auth/isauth', [
@@ -97,6 +102,11 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers\V1'], function($api){
         $api->get('/manager/user/getlist', [
             'as' => 'admin.user.get',
             'uses' => 'UserInfoController@GetUsers'
+        ]);
+
+        $api->get('/manager/user/{userid}', [
+            'as' => 'admin.user.getuserbyid',
+            'uses' => 'UserInfoController@GetUserById'
         ]);
 
         $api->delete('/manager/user/delete/{id}', [

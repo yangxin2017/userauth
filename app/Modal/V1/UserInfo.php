@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class UserInfo extends Model{
 
     protected $table = 'y_userinfo';
-    protected $fillable = ['userid', 'roleid', 'loginname', 'nickname', 'cellphone', 'isfreeze'];
+    protected $fillable = [
+        'userid', 'roleid', 'openid', 
+        'loginname', 'nickname', 'cellphone', 
+        'isfreeze', 'country', 'province', 'city',
+        'sex', 'avatar'
+    ];
 
     public function GetData(){
         return $this->attributes;

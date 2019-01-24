@@ -17,9 +17,15 @@ class CreateUserinfoTable extends Migration
             $table->increments('id');
             $table->integer('userid');
             $table->integer('roleid');
+            $table->string('openid', 100)->nullable()->default('');
             $table->string('loginname', 100);
             $table->string('nickname', 300);
             $table->string('cellphone', 50);
+            $table->string('country', 100)->nullable()->default('');
+            $table->string('province', 100)->nullable()->default('');
+            $table->string('city', 100)->nullable()->default('');
+            $table->tinyInteger('sex')->nullable()->default(1);
+            $table->string('avatar', 300)->nullable();
             $table->boolean('isfreeze');
             $table->timestamps();
         });
